@@ -1,6 +1,16 @@
 package hiber.model;
 
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
+import javax.persistence.OneToOne;
+import javax.persistence.FetchType;
+import javax.persistence.MapsId;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "users")
@@ -19,7 +29,7 @@ public class User {
    @Column(name = "email")
    private String email;
 
-   @OneToOne
+   @OneToOne(fetch = FetchType.LAZY)
    @MapsId
    @JoinColumn(name = "car_id", referencedColumnName = "carId")
    private Car car;

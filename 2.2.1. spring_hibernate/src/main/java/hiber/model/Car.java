@@ -1,6 +1,11 @@
 package hiber.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.OneToOne;
 
 @Entity
 @Table(name = "cars")
@@ -8,16 +13,16 @@ public class Car {
 
     @Id
     @GeneratedValue
-    long carId;
+    private long carId;
 
     @Column
-    String model;
+    private String model;
 
     @Column
-    int series;
+    private int series;
 
 
-    @OneToOne
+    @OneToOne(mappedBy = "car")
     User user;
 
     public Car() {
